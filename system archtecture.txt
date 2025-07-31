@@ -1,0 +1,168 @@
+                        ┌────────────────────────────┐
+                        │      UGV Hardware          │
+                        │  (Sensors, Cameras, CPU)   │
+                        └────────────┬───────────────┘
+                                     │
+                    ┌────────────────▼────────────────┐
+                    │      Backend Server/API         │
+                    │ - Telemetry Controller          │
+                    │ - Video Streaming Gateway       │
+                    │ - Mission Control Engine        │
+                    │ - Auth & Notification System    │
+                    │ - Real-Time WebSocket Broker    │
+                    └────────────────┬────────────────┘
+                                     │
+                          WebSocket + REST
+                                     │
+                  ┌─────────────────▼────────────────┐
+                  │        Frontend Web App          │
+                  │ - React/Vue Interface            │
+                  │ - Dashboard (Map + Telemetry)    │
+                  │ - Video Page (4 cam feeds)       │
+                  │ - Notifications & Controls       │
+                  └──────────────────────────────────┘
+
+
+
+ Core Modules:
+🔹 Frontend (Web Interface):
+Home / Dashboard – Live map + telemetry + system stats (fuel, temperature, battery, health)
+
+Video Feed – Real-time multi-camera video + overlays (target, controls)
+
+Notifications – System alerts (warnings, status changes)
+
+Mission Control – Waypoint setup, start/stop UGV, mode switches
+
+User Auth & Settings – Login, roles, preferences
+
+🔹 Backend (API & Data Layer):
+Telemetry Service – Receives + processes real-time sensor data
+
+Video Service – Streams camera feeds securely
+
+Notification Engine – Sends real-time alerts to frontend
+
+Authentication & User Management
+
+Mission Control Engine – Stores and executes mission commands
+
+Security Middleware – Rate-limiting, IP validation, token checks, logs
+
+
+
+/backend/README.md
+UGV GCS Backend API & Socket Server
+
+A Node.js Express-based backend providing:
+
+Real-time sensor updates via WebSocket (Socket.IO)
+
+REST API for logs, configurations, mission updates
+
+Auth system using JWT & RBAC
+
+🔐 Includes security:
+
+Helmet.js headers
+
+Rate limiting middleware
+
+Validation and sanitization
+
+HTTPS support
+
+
+
+/database/README.md
+Database Schema
+
+PostgreSQL schema for:
+
+Users & Roles
+
+Mission logs
+
+Telemetry history
+
+Notifications archive
+
+Configurations (target zones, thresholds, etc)
+
+
+
+
+SECURITY FEATURES (Backend)
+Use HTTPS with Let's Encrypt
+
+Helmet.js to secure HTTP headers
+
+CORS restriction by domain
+
+JWT token + role system (admin, operator, viewer)
+
+Rate limiter to avoid brute-force
+
+Input validation via express-validator
+
+Environment variable management via .env
+
+Logging (with winston or bunyan)
+
+
+
+
+
+/media-server/README.md
+Media Streaming Server
+
+NGINX with RTMP module for streaming UGV’s live camera feeds.
+
+Input: RTMP from FFmpeg or OBS on UGV
+
+Output: HLS (.m3u8) for web playback
+
+Secure token-based stream URL access planned
+
+
+
+
+
+
+ugv-gcs/
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   │   ├── Dashboard/
+│   │   │   ├── VideoFeed/
+│   │   │   ├── Notifications/
+│   │   │   ├── MissionControl/
+│   │   └── services/
+│   │   └── App.vue / App.jsx
+│   └── README.md
+│
+├── backend/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   ├── services/
+│   ├── config/
+│   └── README.md
+│
+├── docs/
+│   ├── README_Dashboard.md
+│   ├── README_VideoFeed.md
+│   ├── README_Telemetry.md
+│   ├── README_Notification.md
+│   ├── README_Auth.md
+│   ├── README_BackendSecurity.md
+│   └── README_SystemArch.md
+│
+└── package.json / docker-compose.yml / .env / README.md
+
+
+
