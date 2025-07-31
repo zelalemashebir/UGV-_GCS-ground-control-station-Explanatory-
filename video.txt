@@ -1,0 +1,26 @@
+VIDEO FEED MODULE
+✅ Frontend Prompt
+Build a VideoPage React component that:
+
+Displays 4 quadrants for 4 real-time video streams (camera 1–4).
+
+Shows overlays for compass, targeting reticle, control HUD (semi-transparent).
+
+Integrate video.js or HLS.js for live stream support.
+
+Include CameraSwitchButton, HUDOverlay, StreamHealthIndicator.
+
+✅ Backend Prompt
+Create a secure backend stream handler:
+
+Setup VideoController.js to validate stream requests and respond with signed video stream URLs.
+
+Setup VideoStreamService.js to communicate with the local RTMP server or stream proxy.
+
+Use Nginx-RTMP or NodeMediaServer behind authentication.
+
+Middleware: validateCameraToken.js, authMiddleware.js.
+
+Config: Video stream URLs, HLS proxy settings, Nginx config path.
+
+Add a WebSocket event camera_error, stream_status, and camera_switch.

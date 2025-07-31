@@ -1,0 +1,29 @@
+Frontend Prompt
+Build a React component named DashboardPage that displays:
+
+A real-time map using LeafletJS (or Mapbox) showing the UGV position.
+
+A status card area showing battery, temperature, fuel level, GPS signal, health status.
+
+Each status card should use a live WebSocket feed and include a green/yellow/red indicator based on thresholds.
+
+Use TailwindCSS for styling and Framer Motion for animations.
+
+Include modular subcomponents: <StatusCard />, <UGVMap />, <TelemetryFeed />.
+
+✅ Backend Prompt
+Create the backend for the Dashboard module using Node.js and Express:
+
+Use a route /api/telemetry to serve the current state of the UGV in JSON.
+
+Include a TelemetryController.js with functions like getLatestData().
+
+Use TelemetryService.js to fetch and format the data.
+
+Use TelemetryModel.js (Mongoose) to store real-time data with fields like timestamp, location, battery, etc.
+
+Set up a WebSocketServer.js to broadcast telemetry updates every second.
+
+Apply middleware: authMiddleware.js, rateLimiter.js, and errorHandler.js.
+
+Config: JWT secret, telemetry polling interval, MongoDB URI.

@@ -1,0 +1,34 @@
+ MISSION CONTROL MODULE
+✅ Frontend Prompt
+Create a MissionControlPage:
+
+Allow operators to define UGV missions via waypoints (click on map to set).
+
+Show mission queue: list of commands (Go to X,Y, Scan, Pause).
+
+Display mission execution status in real time.
+
+Enable mission start, abort, clear buttons with confirmation modals.
+
+Use WebSocket + API for command dispatch and mission status feedback.
+
+✅ Backend Prompt
+Implement mission planning backend:
+
+MissionModel.js to store missions: waypoints, time, status, commands.
+
+MissionController.js:
+
+createMission()
+
+getAllMissions()
+
+abortMission()
+
+MissionService.js: validate and execute mission logic.
+
+Real-time updates via WebSocket: mission_status, waypoint_reached, mission_aborted.
+
+Middleware: validateMissionInput.js, authMiddleware.js.
+
+Config: mission timeout thresholds, max command retries, UGV command API endpoint.

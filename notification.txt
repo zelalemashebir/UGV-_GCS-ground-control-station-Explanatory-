@@ -1,0 +1,32 @@
+NOTIFICATION MODULE
+✅ Frontend Prompt
+Create a NotificationPage component:
+
+Show a list of real-time notifications sorted by priority (danger, warning, info).
+
+Display UGV critical state messages (low battery, high temp, disconnects).
+
+Allow filtering and searching.
+
+Highlight unresolved alerts and collapse resolved ones.
+
+WebSocket-based live push using Tailwind + simple notification sound.
+
+✅ Backend Prompt
+Set up notifications logic:
+
+Create a NotificationModel.js with fields: message, level, timestamp, resolved.
+
+NotificationController.js:
+
+getAllNotifications()
+
+markResolved(id)
+
+createFromTelemetry()
+
+NotificationService.js should receive telemetry anomalies and trigger alerts.
+
+WebSocket integration to emit new_notification, resolve_notification.
+
+Secure via authMiddleware.js, adminOnly.js.
